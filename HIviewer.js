@@ -60,7 +60,7 @@ function colMix(scale) {
 
 // --------- HItable object constructor ----------
 function HItable(
-    table_name,
+    table_name = null,
     antigen_names,
     sera_names, 
     titers
@@ -135,7 +135,7 @@ function HItable(
     this.html = document.createElement("div");
 
     // Make a title div
-    if(typeof(table_name) !== "undefined"){
+    if(table_name !== null){
         this.title = document.createElement("div");
         this.html.appendChild(this.title);
         this.title.innerHTML = table_name;
@@ -783,7 +783,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         
         // Get table data
         var hitable = hitables[hitable_num];
-        var table_name   = hitable.getElementsByTagName("tablename")[0].innerHTML.trim();
+        var table_name_div = hitable.getElementsByTagName("tablename")[0];
+        if(typeof(table_name_div) !== "undefined") var table_name = table_name_div.innerHTML.trim();
+        else                                       var table_name = null;
+        
         var sera_text    = hitable.getElementsByTagName("sera")[0];
         var antigen_text = hitable.getElementsByTagName("antigens")[0];
         var titer_text   = hitable.getElementsByTagName("titers")[0];
