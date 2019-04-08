@@ -202,9 +202,9 @@ function HItable(
                 this.info.div = document.createElement("div");
                 cell.div.appendChild(this.info.div);
                 this.info.div.style.position = "absolute";
-                this.info.div.style.fontSize = 12;
-                this.info.div.style.top = 10;
-                this.info.div.style.left = 10;
+                this.info.div.style.fontSize = 12+"px";
+                this.info.div.style.top = 10+"px";
+                this.info.div.style.left = 10+"px";
                 this.info.div.style.color = "#cccccc";
                 this.info.div.style.fontWeight = "bolder";
                 this.info.div.style.lineHeight = "16px";
@@ -422,7 +422,7 @@ function HItable(
         var input = document.createElement("input");
         input.placeholder = placeholder;
         input.hitable = hitable;
-        input.style.width = 120;
+        input.style.width = 120+"px";
         input.style.borderStyle = "none";
         input.spellcheck = false;
         hitable.search[type] = input;
@@ -437,8 +437,8 @@ function HItable(
     this.search.div = document.createElement("div");
     this.topleftcell.div.appendChild(this.search.div);
     this.search.div.style.position = "absolute";
-    this.search.div.style.top = 46;
-    this.search.div.style.left = 8;
+    this.search.div.style.top = 46+"px";
+    this.search.div.style.left = 8+"px";
     this.search.div.style.display = "none";
     this.search.div.appendChild( generateSearchBox(this, "Sera",     "sr") );
     this.search.div.appendChild( generateSearchBox(this, "Antigens", "ag") );
@@ -465,8 +465,8 @@ function HItable(
     var general_controls = document.createElement("div");
     this.topleftcell.div.appendChild(general_controls);
     general_controls.style.position = "absolute";
-    general_controls.style.bottom = 8;
-    general_controls.style.left = 8;
+    general_controls.style.bottom = 8+"px";
+    general_controls.style.left = 8+"px";
     general_controls.appendChild( generateBtn(this, "<", "toggleNumericLessThan",   { width:18, height:18, paddingTop: 5 }) );
     general_controls.appendChild( generateBtn(this, "|", "toggleSearchBox",         { width:18, height:18, paddingTop: 6 }) );
     general_controls.appendChild( generateBtn(this, "H", "toggleHighlightMaxTiter", { width:18, height:18, paddingTop: 6 }) );
@@ -481,9 +481,9 @@ function HItable(
     this.btns.col_slider.max = 1;
     this.btns.col_slider.setAttribute("value", 0.5);
     this.btns.col_slider.step = 0.01;
-    this.btns.col_slider.style.width = 60;
-    this.btns.col_slider.style.marginBottom = 6;
-    this.btns.col_slider.style.marginLeft = 4;
+    this.btns.col_slider.style.width = 60+"px";
+    this.btns.col_slider.style.marginBottom = 6+"px";
+    this.btns.col_slider.style.marginLeft = 4+"px";
     this.btns.col_slider.style.display = "none";
     this.btns.col_slider.hitable = this;
     this.btns.col_slider.addEventListener("input", function(){
@@ -495,8 +495,8 @@ function HItable(
     var text_controls = document.createElement("div");
     this.topleftcell.div.appendChild(text_controls);
     text_controls.style.position = "absolute";
-    text_controls.style.top = 8;
-    text_controls.style.right = 8;
+    text_controls.style.top = 8+"px";
+    text_controls.style.right = 8+"px";
     text_controls.appendChild( generateBtn(this, "T", "decreaseFontSize", { fontSize:8, paddingTop:5  }) );
     text_controls.appendChild( generateBtn(this, "T", "increaseFontSize", { fontSize:12, paddingTop:4.5 }) );
     text_controls.appendChild( generateBtn(this, "<s>T</s>", "toggleTiterText", { fontSize:12, paddingTop:4.5 }) );
@@ -505,8 +505,8 @@ function HItable(
     var col_controls = document.createElement("div");
     this.topleftcell.div.appendChild(col_controls);
     col_controls.style.position = "absolute";
-    col_controls.style.top = 28;
-    col_controls.style.right = 8;
+    col_controls.style.top = 28+"px";
+    col_controls.style.right = 8+"px";
     col_controls.appendChild( generateBtn(this, "-", "decreaseColWidth") );
     col_controls.appendChild( generateBtn(this, "+", "increaseColWidth") );
 
@@ -514,8 +514,8 @@ function HItable(
     var row_controls = document.createElement("div");
     this.topleftcell.div.appendChild(row_controls);
     row_controls.style.position = "absolute";
-    row_controls.style.top = 48;
-    row_controls.style.right = 8;
+    row_controls.style.top = 48+"px";
+    row_controls.style.right = 8+"px";
     row_controls.appendChild( generateBtn(this, "-", "decreaseRowHeight") );
     row_controls.appendChild( generateBtn(this, "+", "increaseRowHeight") );
 
@@ -546,23 +546,25 @@ function HItable(
 
 // Sizing columns and rows
 HItable.prototype.resizeWrapper = function(){
-    this.wrapper.style.width  = this.style.rownameWidth + this.style.colWidth*this.sera.length + this.sera.length + 2;
-    this.wrapper.style.height = this.style.headerHeight + this.style.rowHeight*this.antigens.length + this.antigens.length + 2;
+    var width  = this.style.rownameWidth + this.style.colWidth*this.sera.length + this.sera.length + 2;
+    var height = this.style.headerHeight + this.style.rowHeight*this.antigens.length + this.antigens.length + 2;
+    this.wrapper.style.width  = width+"px";
+    this.wrapper.style.height = height+"px";
 }
 HItable.prototype.setRownameWidth = function(width){
     this.style.rownameWidth = width;
-    this.topleftcell.wrapper.style.width = width;
+    this.topleftcell.wrapper.style.width = width+"px";
     for(var i=0; i<this.antigens.length; i++) {
-        this.antigens[i].cell.wrapper.style.width = width;
+        this.antigens[i].cell.wrapper.style.width = width+"px";
     }
     this.resizeWrapper();
 }
 
 HItable.prototype.setHeaderHeight = function(height){
     this.style.headerHeight = height;
-    this.topleftcell.wrapper.style.height = height;
+    this.topleftcell.wrapper.style.height = height+"px";
     for(var i=0; i<this.sera.length; i++) {
-        this.sera[i].cell.wrapper.style.height = height;
+        this.sera[i].cell.wrapper.style.height = height+"px";
     }
     this.resizeWrapper();
 }
@@ -572,9 +574,9 @@ HItable.prototype.decreaseColWidth = function(){ this.setColWidth( this.style.co
 HItable.prototype.setColWidth = function(width){
     this.style.colWidth = width;
     for(var i=0; i<this.sera.length; i++) {
-        this.sera[i].cell.wrapper.style.width = width;
+        this.sera[i].cell.wrapper.style.width = width+"px";
         for(var j=0; j<this.sera[i].titercells.length; j++) {
-            this.sera[i].titercells[j].wrapper.style.width = width;
+            this.sera[i].titercells[j].wrapper.style.width = width+"px";
         }
     }
     this.resizeWrapper();
@@ -585,9 +587,9 @@ HItable.prototype.decreaseRowHeight = function(){ this.setRowHeight( this.style.
 HItable.prototype.setRowHeight = function(height){
     this.style.rowHeight = height;
     for(var i=0; i<this.antigens.length; i++) {
-        this.antigens[i].cell.wrapper.style.height = height;
+        this.antigens[i].cell.wrapper.style.height = height+"px";
         for(var j=0; j<this.antigens[i].titercells.length; j++) {
-            this.antigens[i].titercells[j].wrapper.style.height = height;
+            this.antigens[i].titercells[j].wrapper.style.height = height+"px";
         }
     }
     this.resizeWrapper();
@@ -602,7 +604,7 @@ HItable.prototype.decreaseFontSize = function(){
 }
 HItable.prototype.setFontSize = function(fontsize){
     this.style.fontSize = fontsize;
-    this.table.style.fontSize = fontsize;
+    this.table.style.fontSize = fontsize+"px";
 }
 
 // Cell padding
