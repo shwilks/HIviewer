@@ -467,10 +467,10 @@ function HItable(
     general_controls.style.position = "absolute";
     general_controls.style.bottom = 8+"px";
     general_controls.style.left = 8+"px";
-    general_controls.appendChild( generateBtn(this, "<", "toggleNumericLessThan",   { width:18, height:18, paddingTop: 5 }) );
-    general_controls.appendChild( generateBtn(this, "|", "toggleSearchBox",         { width:18, height:18, paddingTop: 6 }) );
-    general_controls.appendChild( generateBtn(this, "H", "toggleHighlightMaxTiter", { width:18, height:18, paddingTop: 6 }) );
-    general_controls.appendChild( generateBtn(this, "C", "toggleTiterColor",        { width:18, height:18, paddingTop: 6 }) );
+    general_controls.appendChild( generateBtn(this, "<", "toggleNumericLessThan",   { width:"18px", height:"18px", paddingTop: "5px" }) );
+    general_controls.appendChild( generateBtn(this, "|", "toggleSearchBox",         { width:"18px", height:"18px", paddingTop: "6px" }) );
+    general_controls.appendChild( generateBtn(this, "H", "toggleHighlightMaxTiter", { width:"18px", height:"18px", paddingTop: "6px" }) );
+    general_controls.appendChild( generateBtn(this, "C", "toggleTiterColor",        { width:"18px", height:"18px", paddingTop: "6px" }) );
 
     // Color slider
     this.btns.col_slider = document.createElement("input");
@@ -497,9 +497,9 @@ function HItable(
     text_controls.style.position = "absolute";
     text_controls.style.top = 8+"px";
     text_controls.style.right = 8+"px";
-    text_controls.appendChild( generateBtn(this, "T", "decreaseFontSize", { fontSize:8, paddingTop:5  }) );
-    text_controls.appendChild( generateBtn(this, "T", "increaseFontSize", { fontSize:12, paddingTop:4.5 }) );
-    text_controls.appendChild( generateBtn(this, "<s>T</s>", "toggleTiterText", { fontSize:12, paddingTop:4.5 }) );
+    text_controls.appendChild( generateBtn(this, "T", "decreaseFontSize",       { fontSize:"8px",  paddingTop:"5px"   }) );
+    text_controls.appendChild( generateBtn(this, "T", "increaseFontSize",       { fontSize:"12px", paddingTop:"4.5px" }) );
+    text_controls.appendChild( generateBtn(this, "<s>T</s>", "toggleTiterText", { fontSize:"12px", paddingTop:"4.5px" }) );
 
     // Col controls
     var col_controls = document.createElement("div");
