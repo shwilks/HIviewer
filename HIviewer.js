@@ -1,7 +1,9 @@
 
+// Make global HIviewer object
+HIviewer = {};
 
 // Function to convert to log titers
-function convert2log(titer){
+HIviewer.convert2log = function(titer){
 
     var lessthan = titer.substring(0,4) == "&lt;";
     var morethan = titer.substring(0,4) == "&gt;";
@@ -25,7 +27,7 @@ function convert2log(titer){
 
 
 // Function to mix colors
-function colMix(scale) {
+HIviewer.colMix = function(scale) {
 
     if(scale > 1) scale = 1;
     if(scale < 0) scale = 0;
@@ -75,7 +77,7 @@ function HItable(
                 titers[i][j] = "";
                 logtiters[i].push(NaN);
             } else {
-                logtiters[i].push(convert2log(titers[i][j]));
+                logtiters[i].push(HIviewer.convert2log(titers[i][j]));
             }
         }
     }
@@ -764,7 +766,7 @@ HItable.prototype.updateTiterColor = function(){
                 if(this.settings.coloredByTiter) {
                     var standardised_log = (titer.logtiter + 1) / 10;
                     standardised_log = Math.pow(standardised_log, color_adjustment);
-                    titer.cell.div.style.backgroundColor = colMix(standardised_log);
+                    titer.cell.div.style.backgroundColor = HIviewer.colMix(standardised_log);
                     titer.cell.div.classList.add("colored");
                 }
                 else {
@@ -778,10 +780,9 @@ HItable.prototype.updateTiterColor = function(){
 }
 
 
-// Populate the DOM ------------
-document.addEventListener("DOMContentLoaded", function(event) { 
+HIviewer.convertTables = function(){
 
-    // Cycle through HI tables
+	// Cycle through HI tables
     var hitables = document.getElementsByTagName("hitable");
     for(var hitable_num=0; hitable_num<hitables.length; hitable_num++){
         
@@ -853,11 +854,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     }
 
+}
 
+// Populate the DOM ------------
+document.addEventListener("DOMContentLoaded", function(event) { 
 
-
-
-
+    HIviewer.convertTables();
 
     // Add styles -----------
     var style = document.createElement("style");
