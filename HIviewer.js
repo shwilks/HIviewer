@@ -86,9 +86,11 @@ function HItable(
     for(var i=0; i<sera_names.length; i++){
         colbase = null;
         for(var j=0; j<antigen_names.length; j++){
-            if(colbase == null || logtiters[j][i] > colbase){
-                colbase = logtiters[j][i];
-            }
+        	if(!isNaN(logtiters[j][i])){
+	            if(colbase == null || logtiters[j][i] > colbase){
+	                colbase = logtiters[j][i];
+	            }
+        	}
         }
         colbases.push(colbase);
     }
